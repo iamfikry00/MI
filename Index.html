@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="id" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YIS</title></title>
+  
+  <!-- External CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- External Libraries -->
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Playfair+Display:wght@700;800&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+</head>
+<body class="h-full">
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container-custom" id="toastContainer"></div>
+  
+  <!-- NAVBAR -->
+  <nav class="navbar-custom">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between w-100">
+        <a class="d-flex align-items-center gap-2 text-decoration-none" href="#" onclick="showPage('home')">
+          <div style="width:38px;height:38px;background:var(--secondary);border-radius:10px;display:flex;align-items:center;justify-content:center;">
+            <svg width="22" height="22" viewbox="0 0 24 24" fill="none" stroke="#1a3a6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+              <path d="M6 12v5c3 3 9 3 12 0v-5" />
+            </svg>
+          </div>
+          <div>
+            <div class="navbar-brand-text" id="nav-school-name">YASPIAR ISLAMIC SCHOOL</div>
+            <span class="navbar-brand-sub">Pendidikan Berkualitas</span>
+          </div>
+        </a>
+        <button class="navbar-toggler d-md-none" type="button" id="mobileMenuBtn" style="background:transparent;border:1.5px solid rgba(255,255,255,0.3);border-radius:8px;padding:0.4rem 0.6rem;cursor:pointer;">
+          <i data-lucide="menu" style="width:20px;height:20px;color:#fff;"></i>
+        </button>
+        <div class="d-none d-md-flex align-items-center gap-1" id="navMenu">
+          <a class="nav-link-custom active" href="#" onclick="showPage('home');setActive(this)">Beranda</a>
+          <a class="nav-link-custom" href="#" onclick="showPage('akademik');setActive(this)">Akademik</a>
+          <a class="nav-link-custom" href="#" onclick="showPage('siswa');setActive(this)">Data Siswa</a>
+          <a class="nav-link-custom" href="#" onclick="showPage('guru');setActive(this)">Data Guru</a>
+          <a class="nav-link-custom" href="#" onclick="showPage('pengumuman');setActive(this)">Pengumuman</a>
+          <a class="nav-link-custom nav-cta ms-2" href="#" onclick="showPage('daftar');setActive(this)">Pendaftaran</a>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobileNav" class="d-md-none" style="display:none!important;flex-direction:column;gap:0.25rem;margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid rgba(255,255,255,0.1);">
+        <a class="nav-link-custom" href="#" onclick="showPage('home');toggleMobileMenu()">Beranda</a>
+        <a class="nav-link-custom" href="#" onclick="showPage('akademik');toggleMobileMenu()">Akademik</a>
+        <a class="nav-link-custom" href="#" onclick="showPage('siswa');toggleMobileMenu()">Data Siswa</a>
+        <a class="nav-link-custom" href="#" onclick="showPage('guru');toggleMobileMenu()">Data Guru</a>
+        <a class="nav-link-custom" href="#" onclick="showPage('pengumuman');toggleMobileMenu()">Pengumuman</a>
+        <a class="nav-link-custom nav-cta" href="#" onclick="showPage('daftar');toggleMobileMenu()">Pendaftaran</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== PAGE: HOME ===== -->
+  <div class="page active" id="page-home">
+    <!-- Hero -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-6">
+            <div class="hero-badge">✦ Lulus Hafal 2 juz Al Qur'an</div>
+            <h1 class="hero-title">Membentuk Generasi <span id="hero-school-name">Unggul</span> &amp; Berkarakter</h1>
+            <p class="hero-desc" id="hero-tagline">Kami berkomitmen memberikan pendidikan berkualitas tinggi yang mengintegrasikan ilmu pengetahuan, teknologi, dan nilai-nilai luhur bangsa.</p>
+            <div class="d-flex flex-wrap gap-2">
+              <button class="hero-btn-primary" onclick="showPage('daftar');setActiveByName('Pendaftaran')">Daftar Sekarang</button>
+              <button class="hero-btn-outline" onclick="showPage('akademik');setActiveByName('Akademik')">Lihat Program</button>
+            </div>
+            <div class="hero-stats">
+              <div class="stat-item">
+                <div class="stat-num">1.240</div>
+                <div class="stat-label">Total Siswa</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-num">68</div>
+                <div class="stat-label">Tenaga Pendidik</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-num">98%</div>
+                <div class="stat-label">Kelulusan</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-num">25+</div>
+                <div class="stat-label">Prestasi Nasional</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="hero-card">
+              <div class="hero-card-title">📢 Pengumuman Terbaru</div>
+              <div id="hero-news-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Features -->
+    <section class="section-pad">
+      <div class="container">
+        <div class="text-center mb-4">
+          <div class="section-label">Keunggulan Kami</div>
+          <div class="section-title">Mengapa Memilih Kami?</div>
+          <div class="section-divider mx-auto"></div>
+        </div>
+        <div class="row g-4">
+          <div class="col-sm-6 col-lg-3">
+            <div class="feature-card">
+              <div class="feature-icon blue"><i data-lucide="graduation-cap" style="width:24px;height:24px;"></i></div>
+              <h5 style="font-weight:700;font-size:1rem;margin-bottom:0.5rem;">Kurikulum Merdeka</h5>
+              <p style="color:var(--text-muted);font-size:0.88rem;line-height:1.6;">Penerapan Kurikulum Merdeka secara penuh dengan pendekatan pembelajaran berbasis proyek dan kompetensi.</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3">
+            <div class="feature-card">
+              <div class="feature-icon yellow"><i data-lucide="trophy" style="width:24px;height:24px;"></i></div>
+              <h5 style="font-weight:700;font-size:1rem;margin-bottom:0.5rem;">Prestasi Gemilang</h5>
+              <p style="color:var(--text-muted);font-size:0.88rem;line-height:1.6;">Lebih dari 25 prestasi tingkat nasional dan internasional diraih dalam 3 tahun terakhir.</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3">
+            <div class="feature-card">
+              <div class="feature-icon green"><i data-lucide="users" style="width:24px;height:24px;"></i></div>
+              <h5 style="font-weight:700;font-size:1rem;margin-bottom:0.5rem;">Guru Berpengalaman</h5>
+              <p style="color:var(--text-muted);font-size:0.88rem;line-height:1.6;">68 tenaga pengajar bersertifikat dengan rata-rata 12 tahun pengalaman mengajar profesional.</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3">
+            <div class="feature-card">
+              <div class="feature-icon red"><i data-lucide="book-open" style="width:24px;height:24px;"></i></div>
+              <h5 style="font-weight:700;font-size:1rem;margin-bottom:0.5rem;">Fasilitas Modern</h5>
+              <p style="color:var(--text-muted);font-size:0.88rem;line-height:1.6;">Lab komputer, lab sains, perpustakaan digital, lapangan olahraga, dan ruang serbaguna berteknologi tinggi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Quick Access -->
+    <section style="background:#fff;padding:3rem 0;">
+      <div class="container">
+        <div class="section-label text-center">Akses Cepat</div>
+        <div class="section-title text-center" style="margin-bottom:0.5rem;">Menu Utama</div>
+        <div class="section-divider mx-auto"></div>
+        <div class="row g-3 mt-2">
+          <div class="col-6 col-md-3">
+            <button onclick="showPage('siswa');setActiveByName('Data Siswa')" style="background:var(--light-bg);border:1.5px solid #e0e8f5;border-radius:14px;padding:1.5rem 1rem;width:100%;cursor:pointer;transition:all 0.2s;text-align:center;" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='#e0e8f5'">
+              <i data-lucide="users" style="width:30px;height:30px;color:var(--primary);margin-bottom:0.6rem;"></i>
+              <div style="font-weight:700;font-size:0.92rem;">Data Siswa</div>
+              <div style="color:var(--text-muted);font-size:0.78rem;margin-top:0.2rem;">44 Siswa</div>
+            </button>
+          </div>
+          <div class="col-6 col-md-3">
+            <button onclick="showPage('guru');setActiveByName('Data Guru')" style="background:var(--light-bg);border:1.5px solid #e0e8f5;border-radius:14px;padding:1.5rem 1rem;width:100%;cursor:pointer;transition:all 0.2s;text-align:center;" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='#e0e8f5'">
+              <i data-lucide="user-check" style="width:30px;height:30px;color:var(--primary);margin-bottom:0.6rem;"></i>
+              <div style="font-weight:700;font-size:0.92rem;">Data Guru</div>
+              <div style="color:var(--text-muted);font-size:0.78rem;margin-top:0.2rem;">7 Guru</div>
+            </button>
+          </div>
+          <div class="col-6 col-md-3">
+            <button onclick="showPage('akademik');setActiveByName('Akademik')" style="background:var(--light-bg);border:1.5px solid #e0e8f5;border-radius:14px;padding:1.5rem 1rem;width:100%;cursor:pointer;transition:all 0.2s;text-align:center;" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='#e0e8f5'">
+              <i data-lucide="calendar" style="width:30px;height:30px;color:var(--primary);margin-bottom:0.6rem;"></i>
+              <div style="font-weight:700;font-size:0.92rem;">Jadwal</div>
+              <div style="color:var(--text-muted);font-size:0.78rem;margin-top:0.2rem;">Lihat Jadwal</div>
+            </button>
+          </div>
+          <div class="col-6 col-md-3">
+            <button onclick="showPage('pengumuman');setActiveByName('Pengumuman')" style="background:var(--light-bg);border:1.5px solid #e0e8f5;border-radius:14px;padding:1.5rem 1rem;width:100%;cursor:pointer;transition:all 0.2s;text-align:center;" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='#e0e8f5'">
+              <i data-lucide="bell" style="width:30px;height:30px;color:var(--primary);margin-bottom:0.6rem;"></i>
+              <div style="font-weight:700;font-size:0.92rem;">Pengumuman</div>
+              <div style="color:var(--text-muted);font-size:0.78rem;margin-top:0.2rem;">Info Terkini</div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer-section">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="footer-brand" id="footer-school-name">Yayasan Pendidikan ar-Ridwan ar-Rabbani</div>
+            <p style="font-size:0.87rem;margin-top:0.75rem;line-height:1.7;color:rgba(255,255,255,0.55);">
+              
+              Jl. Raya Ciangsana No.8, 08, Ciangsana, Kec. Gn. Putri, Kabupaten Bogor, Jawa Barat 16968 <br>
+              Telp : 0819-0580-9035<br>
+              Email : -
+              
+            </p>
+          </div>
+          <div class="col-sm-6 col-lg-2">
+            <div style="color:#fff;font-weight:700;font-size:0.9rem;margin-bottom:1rem;">Menu</div>
+            <a class="footer-link" href="#" onclick="showPage('home')">Beranda</a>
+            <a class="footer-link" href="#" onclick="showPage('akademik')">Akademik</a>
+            <a class="footer-link" href="#" onclick="showPage('siswa')">Data Siswa</a>
+            <a class="footer-link" href="#" onclick="showPage('guru')">Data Guru</a>
+          </div>
+          <div class="col-sm-6 col-lg-3">
+            <div style="color:#fff;font-weight:700;font-size:0.9rem;margin-bottom:1rem;">Layanan</div>
+            <a class="footer-link" href="#" onclick="showPage('pengumuman')">Pengumuman</a>
+            <a class="footer-link" href="#" onclick="showPage('daftar')">Pendaftaran</a>
+            <a class="footer-link" href="#">Perpustakaan Digital</a>
+            <a class="footer-link" href="#">E-Learning</a>
+          </div>
+          <div class="col-lg-3">
+            <div style="color:#fff;font-weight:700;font-size:0.9rem;margin-bottom:1rem;">Kepala Sekolah</div>
+            <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:1rem;border:1px solid rgba(255,255,255,0.1);">
+              <div style="color:#fff;font-weight:700;" id="footer-principal">Yeyep Mustakim, S.Pd.</div>
+              <div style="font-size:0.8rem;color:rgba(255,255,255,0.5);margin-top:0.25rem;">Kepala Sekolah</div>
+              <div style="font-size:0.8rem;color:rgba(255,255,255,0.5);margin-top:0.5rem;">NIP.-</div>
+            </div>
+          </div>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-bottom">© 2026 YASPIARR ISLAMIC SCHOOL. Hak Cipta Dilindungi.</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ===== PAGE: AKADEMIK ===== -->
+  <div class="page" id="page-akademik">
+    <div class="page-header">
+      <div class="container">
+        <div class="breadcrumb-custom mb-1">
+          <span>Beranda</span> <span style="margin:0 0.4rem;">›</span> <span class="active">Akademik</span>
+        </div>
+        <h2>Program Akademik</h2>
+        <p>Jadwal, mata pelajaran, dan informasi akademik lengkap</p>
+      </div>
+    </div>
+    <div class="section-pad">
+      <div class="container">
+        <!-- Jurusan Cards -->
+        
+        <div class="row g-3 mb-5">
+          <div class="col-md-4">
+            <div class="feature-card" style="border-top:4px solid var(--primary);">
+              <div class="feature-icon blue"><i data-lucide="flask-conical" style="width:22px;height:22px;"></i></div>
+              <h5 style="font-weight:700;font-size:1rem;">IPA (MIPA)</h5>
+              <p style="font-size:0.85rem;color:var(--text-muted);margin:0.4rem 0 1rem;">Matematika, Fisika, Kimia, Biologi. Persiapan masuk jurusan saintek di PTN terkemuka.</p>
+              <div style="font-size:0.8rem;color:var(--primary);font-weight:600;">420 Siswa • 14 Kelas</div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card" style="border-top:4px solid var(--secondary);">
+              <div class="feature-icon yellow"><i data-lucide="bar-chart-2" style="width:22px;height:22px;"></i></div>
+              <h5 style="font-weight:700;font-size:1rem;">IPS (Sosial)</h5>
+              <p style="font-size:0.85rem;color:var(--text-muted);margin:0.4rem 0 1rem;">Ekonomi, Sosiologi, Geografi, Sejarah. Persiapan masuk jurusan soshum di PTN.</p>
+              <div style="font-size:0.8rem;color:var(--primary);font-weight:600;">380 Siswa • 12 Kelas</div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card" style="border-top:4px solid #7c3aed;">
+              <div class="feature-icon" style="background:#ede9fe;color:#7c3aed;width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+                <i data-lucide="code-2" style="width:22px;height:22px;"></i>
+              </div>
+              <h5 style="font-weight:700;font-size:1rem;">Bahasa &amp; Budaya</h5>
+              <p style="font-size:0.85rem;color:var(--text-muted);margin:0.4rem 0 1rem;">Sastra, Bahasa Asing, Antropologi. Persiapan jurusan humaniora dan seni.</p>
+              <div style="font-size:0.8rem;color:var(--primary);font-weight:600;">440 Siswa • 14 Kelas</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Jadwal Pelajaran -->
+        <div class="section-label">Jadwal</div>
+        <div class="section-title mb-2">Jadwal Pelajaran</div>
+        <div class="section-divider"></div>
+        <div class="row g-3 mb-3 align-items-center">
+          <div class="col-md-4">
+            <select class="filter-select w-100" id="kelasFilter" onchange="renderJadwal()">
+              <option value="X-IPA-1">X IPA 1</option>
+              <option value="X-IPA-2">X IPA 2</option>
+              <option value="XI-IPS-1">XI IPS 1</option>
+              <option value="XII-IPA-1">XII IPA 1</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <select class="filter-select w-100" id="hariFilter" onchange="renderJadwal()">
+              <option value="Senin">Senin</option>
+              <option value="Selasa">Selasa</option>
+              <option value="Rabu">Rabu</option>
+              <option value="Kamis">Kamis</option>
+              <option value="Jumat">Jumat</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-card">
+          <div class="table-header">
+            <h5 id="jadwal-title">Jadwal X IPA 1 - Senin</h5>
+          </div>
+          <div class="table-responsive">
+            <table class="table custom-table" id="jadwal-table">
+              <thead>
+                <tr>
+                  <th>Jam</th>
+                  <th>Waktu</th>
+                  <th>Mata Pelajaran</th>
+                  <th>Guru</th>
+                  <th>Ruang</th>
+                </tr>
+              </thead>
+              <tbody id="jadwal-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PAGE: SISWA ===== -->
+  <div class="page" id="page-siswa">
+    <div class="page-header">
+      <div class="container">
+        <div class="breadcrumb-custom mb-1">
+          <span>Beranda</span><span style="margin:0 0.4rem;">›</span><span class="active">Data Siswa</span>
+        </div>
+        <h2>Data Siswa</h2>
+        <p>Manajemen dan pencarian data siswa aktif</p>
+      </div>
+    </div>
+    <div class="section-pad">
+      <div class="container">
+        <div class="row g-3 mb-4 align-items-center">
+          <div class="col-md-5">
+            <input type="text" class="search-bar" id="searchSiswa" placeholder="🔍  Cari nama atau NIS siswa..." oninput="filterSiswa()">
+          </div>
+          <div class="col-md-3">
+            <select class="filter-select w-100" id="filterKelas" onchange="filterSiswa()">
+              <option value="">Semua Kelas</option>
+              <option>X IPA 1</option><option>X IPA 2</option><option>X IPS 1</option>
+              <option>XI IPA 1</option><option>XI IPA 2</option><option>XI IPS 1</option>
+              <option>XII IPA 1</option><option>XII IPS 1</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <select class="filter-select w-100" id="filterStatus" onchange="filterSiswa()">
+              <option value="">Semua Status</option>
+              <option>Aktif</option><option>Tidak Aktif</option>
+            </select>
+          </div>
+          <div class="col-md-2 text-end">
+            <span style="font-size:0.85rem;color:var(--text-muted);">Total: <b id="siswa-count">0</b> siswa</span>
+          </div>
+        </div>
+        <div class="table-card">
+          <div class="table-header">
+            <h5>Daftar Siswa</h5>
+            <div style="font-size:0.8rem;opacity:0.7;">Tahun Ajaran 2024/2025</div>
+          </div>
+          <div class="table-responsive">
+            <table class="table custom-table">
+              <thead>
+                <tr>
+                  <th>NIS</th>
+                  <th>Nama Siswa</th>
+                  <th>Kelas</th>
+                  <th>Jurusan</th>
+                  <th>NISN</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="siswa-tbody"></tbody>
+            </table>
+          </div>
+          <div class="d-flex align-items-center justify-content-between px-3 py-3">
+            <div style="font-size:0.85rem;color:var(--text-muted);" id="siswa-page-info"></div>
+            <div class="pagination-custom d-flex gap-1" id="siswa-pagination"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PAGE: GURU ===== -->
+  <div class="page" id="page-guru">
+    <div class="page-header">
+      <div class="container">
+        <div class="breadcrumb-custom mb-1">
+          <span>Beranda</span><span style="margin:0 0.4rem;">›</span><span class="active">Data Guru</span>
+        </div>
+        <h2>Data Guru &amp; Staf</h2>
+        <p>Daftar tenaga pendidik dan kependidikan</p>
+      </div>
+    </div>
+    <div class="section-pad">
+      <div class="container">
+        <div class="row g-3 mb-4 align-items-center">
+          <div class="col-md-5">
+            <input type="text" class="search-bar" id="searchGuru" placeholder="🔍  Cari nama atau NIP guru..." oninput="filterGuru()">
+          </div>
+          <div class="col-md-3">
+            <select class="filter-select w-100" id="filterMapel" onchange="filterGuru()">
+              <option value="">Semua Mata Pelajaran</option>
+              <option>Matematika</option><option>Fisika</option><option>Kimia</option>
+              <option>Biologi</option><option>B. Indonesia</option><option>B. Inggris</option>
+              <option>Sejarah</option><option>Ekonomi</option><option>Sosiologi</option>
+            </select>
+          </div>
+          <div class="col-md-2 text-end">
+            <span style="font-size:0.85rem;color:var(--text-muted);">Total: <b id="guru-count">0</b> guru</span>
+          </div>
+        </div>
+        <div class="table-card">
+          <div class="table-header">
+            <h5>Daftar Guru &amp; Staf</h5>
+          </div>
+          <div class="table-responsive">
+            <table class="table custom-table">
+              <thead>
+                <tr>
+                  <th>NIP</th>
+                  <th>Nama Guru</th>
+                  <th>Mata Pelajaran</th>
+                  <th>Jabatan</th>
+                  <th>Pendidikan</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="guru-tbody"></tbody>
+            </table>
+          </div>
+          <div class="d-flex align-items-center justify-content-between px-3 py-3">
+            <div style="font-size:0.85rem;color:var(--text-muted);" id="guru-page-info"></div>
+            <div class="pagination-custom d-flex gap-1" id="guru-pagination"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PAGE: PENGUMUMAN ===== -->
+  <div class="page" id="page-pengumuman">
+    <div class="page-header">
+      <div class="container">
+        <div class="breadcrumb-custom mb-1">
+          <span>Beranda</span><span style="margin:0 0.4rem;">›</span><span class="active">Pengumuman</span>
+        </div>
+        <h2>Pengumuman</h2>
+        <p>Informasi dan pemberitahuan resmi sekolah</p>
+      </div>
+    </div>
+    <div class="section-pad">
+      <div class="container">
+        <div class="row g-3 mb-4 align-items-center">
+          <div class="col-md-5">
+            <input type="text" class="search-bar" id="searchAnn" placeholder="🔍  Cari pengumuman..." oninput="filterAnn()">
+          </div>
+          <div class="col-md-3">
+            <select class="filter-select w-100" id="filterAnnCat" onchange="filterAnn()">
+              <option value="">Semua Kategori</option>
+              <option>Akademik</option><option>Ekstrakurikuler</option><option>Ujian</option><option>Umum</option>
+            </select>
+          </div>
+        </div>
+        <div id="ann-list" class="row g-3"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PAGE: PENDAFTARAN ===== -->
+  <div class="page" id="page-daftar">
+    <div class="page-header">
+      <div class="container">
+        <div class="breadcrumb-custom mb-1">
+          <span>Beranda</span><span style="margin:0 0.4rem;">›</span><span class="active">Pendaftaran</span>
+        </div>
+        <h2>Formulir Pendaftaran</h2>
+        <p>Pendaftaran Peserta Didik Baru Tahun Ajaran 2026/2027</p>
+      </div>
+    </div>
+    <div class="section-pad">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="form-card">
+              <h4 style="font-weight:800;color:var(--primary);margin-bottom:0.5rem;">Data Calon Siswa</h4>
+              <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:1.75rem;">Isi formulir dengan data yang benar dan lengkap. Semua field bertanda * wajib diisi.</p>
+              <form id="daftarForm" onsubmit="submitDaftar(event)">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label-custom" for="namaLengkap">Nama Lengkap *</label>
+                    <input type="text" id="namaLengkap" class="form-input-custom" placeholder="Masukkan nama lengkap" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label-custom" for="nisn">NISN *</label>
+                    <input type="text" id="nisn" class="form-input-custom" placeholder="10 digit NISN" maxlength="10" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label-custom" for="ttl">Tempat Lahir *</label>
+                    <input type="text" id="ttl" class="form-input-custom" placeholder="Kota kelahiran" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label-custom" for="tgl">Tanggal Lahir *</label>
+                    <input type="date" id="tgl" class="form-input-custom" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label-custom" for="jenisKelamin">Jenis Kelamin *</label>
+                    <select id="jenisKelamin" class="form-input-custom" required>
+                      <option value="">Pilih Jenis Kelamin</option>
+                      <option>Laki-laki</option><option>Perempuan</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label-custom" for="jurusanPilihan">Jurusan Pilihan *</label>
+                    <select id="jurusanPilihan" class="form-input-custom" required>
+                      <option value="">Pilih Jurusan</option>
+                      <option>IPA (MIPA)</option><option>IPS (Sosial)</option><option>Bahasa &amp; Budaya</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label-custom" for="asalSekolah">Asal Sekolah *</label>
+                    <input type="text" id="asalSekolah" class="form-input-custom" placeholder="Nama SMP/MTs asal" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label-custom" for="nilaiUN">Rata-rata Nilai Rapor *</label>
+                    <input type="number" id="nilaiUN" class="form-input-custom" placeholder="Contoh: 85.50" min="0" max="100" step="0.01" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label-custom" for="namaOrtu">Nama Orang Tua / Wali *</label>
+                    <input type="text" id="namaOrtu" class="form-input-custom" placeholder="Nama lengkap orang tua/wali" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label-custom" for="noHp">No. HP Orang Tua *</label>
+                    <input type="tel" id="noHp" class="form-input-custom" placeholder="08xxxxxxxxxx" required>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label-custom" for="alamat">Alamat Lengkap *</label>
+                    <textarea id="alamat" class="form-input-custom" rows="3" placeholder="Jalan, nomor, RT/RW, kelurahan, kecamatan, kota" required></textarea>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label-custom" for="email">Email Orang Tua</label>
+                    <input type="email" id="email" class="form-input-custom" placeholder="email@contoh.com">
+                  </div>
+                  <div class="col-12 mt-2">
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                      <span id="submitText">Kirim Formulir Pendaftaran</span>
+                    </button>
+                  </div>
+                </div>
+              </form>
+              <!-- Success Message (hidden by default) -->
+              <div id="formSuccess" style="display:none;background:#d4f0e0;border:1.5px solid #a3d9b8;border-radius:12px;padding:1.5rem;margin-top:1.5rem;text-align:center;">
+                <div style="font-size:2rem;margin-bottom:0.5rem;">✅</div>
+                <div style="font-weight:700;color:#1a7a45;font-size:1.05rem;" id="successName"></div>
+                <div style="color:#2d7a50;font-size:0.9rem;margin-top:0.4rem;">Formulir pendaftaran berhasil dikirim! Nomor pendaftaran Anda: <b id="noPendaftaran"></b></div>
+                <div style="color:var(--text-muted);font-size:0.82rem;margin-top:0.75rem;">Tim kami akan menghubungi orang tua/wali melalui nomor HP yang terdaftar.</div>
+              </div>
+            </div>
+          </div>
+          <!-- Sidebar Info -->
+          <div class="col-lg-4 mt-4 mt-lg-0">
+            <div class="form-card mb-3">
+              <h5 style="font-weight:700;color:var(--primary);margin-bottom:1rem;">📅 Jadwal Pendaftaran</h5>
+              <div style="font-size:0.88rem;">
+                <div class="d-flex justify-content-between py-2 border-bottom">
+                  <span style="color:var(--text-muted);">Gelombang I</span><span style="font-weight:600;">1 - 31 Jan 2025</span>
+                </div>
+                <div class="d-flex justify-content-between py-2 border-bottom">
+                  <span style="color:var(--text-muted);">Gelombang II</span><span style="font-weight:600;">1 - 28 Feb 2025</span>
+                </div>
+                <div class="d-flex justify-content-between py-2 border-bottom">
+                  <span style="color:var(--text-muted);">Tes Seleksi</span><span style="font-weight:600;">15 Mar 2025</span>
+                </div>
+                <div class="d-flex justify-content-between py-2">
+                  <span style="color:var(--text-muted);">Pengumuman</span><span style="font-weight:600;color:#1a7a45;">29 Maret 2026</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-card">
+              <h5 style="font-weight:700;color:var(--primary);margin-bottom:1rem;">📋 Persyaratan</h5>
+              <ul style="font-size:0.87rem;padding-left:1.2rem;color:var(--text-muted);line-height:2;">
+                <li>Ijazah / SKHUN Tk/Paud (bila ada)</li>
+                <li>Kartu Keluarga (KK)</li>
+                <li>Akta Kelahiran</li>
+                <li>Rapor Tk/Paud (bila ada)</li>
+                <li>Pas Foto 3×4 (4 lembar)</li>
+                <li>Sertifikat prestasi (bila ada)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- External Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- External JavaScript -->
+  <script src="js/script.js"></script>
+  
+  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e0c1be5451d8333',t:'MTc3NDI1NDk5Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>
